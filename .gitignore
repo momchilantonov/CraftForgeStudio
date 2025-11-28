@@ -8,19 +8,25 @@ __pycache__/
 *.pdb
 *.so
 
-# Conda environment
-cfs/
-conda-meta/
+# Conda environment (project-local)
+# Ignore conda environment metadata if created inside the project
+cfs/.conda/
+cfs/conda-meta/
 *.conda
 # Comment out if you want to track environment.yml
 *.yaml
 
-# Virtual environment folders
+# Virtual environment folders (project-local and global)
 .env
 .venv
 env/
 venv/
 ENV/
+# Ignore virtualenvs that may be created inside the `cfs/` folder
+cfs/.venv
+cfs/env/
+cfs/venv/
+cfs/ENV/
 
 # Flask instance folder (contains runtime files, secrets, DB, uploads)
 instance/
@@ -28,6 +34,12 @@ instance/
 *.sqlite3
 *.sqlite
 *.log
+# Also ignore project-specific runtime files under `cfs/`
+cfs/instance/
+cfs/*.db
+cfs/*.sqlite3
+cfs/*.sqlite
+cfs/*.log
 
 # Uploads or generated server-side content
 uploads/
