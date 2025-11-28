@@ -15,133 +15,116 @@ A modern, multilingual e-commerce platform built with Flask 3.1.2 and Python 3.1
 
 ## 🏗️ Project Structure
 
-```
-app/                                    # Project root
-│
-├── app/                                # Main application package
-│   ├── __init__.py                     # Application factory
-│   ├── config.py                       # Environment configurations
-│   ├── extensions.py                   # Flask extensions (SQLAlchemy, Migrate, etc.)
-│   │
-│   ├── models/                         # Database models
-│   │   ├── __init__.py
-│   │   ├── category.py                 # Category with multilingual fields
-│   │   ├── product.py                  # Product with category relationship
-│   │   ├── order.py                    # Order with payment/delivery info
-│   │   └── admin.py                    # Admin user with Flask-Login
-│   │
-│   ├── repositories/                   # Data access layer (CRUD operations)
-│   │   ├── __init__.py
-│   │   ├── base_repository.py          # Base repository with common methods
-│   │   ├── category_repository.py      # Category-specific queries
-│   │   ├── product_repository.py       # Product queries (search, filter, etc.)
-│   │   └── order_repository.py         # Order queries (by status, email, etc.)
-│   │
-│   ├── services/                       # Business logic layer
-│   │   ├── __init__.py
-│   │   ├── category_service.py         # Category operations
-│   │   ├── cart_service.py             # Cart management (add, update, remove)
-│   │   ├── order_service.py            # Order processing
-│   │   └── payment_service.py          # Payment gateway integration
-│   │
-│   ├── routes/                         # Request handlers (blueprints)
-│   │   ├── __init__.py
-│   │   ├── main.py                     # Home, about, contact
-│   │   ├── products.py                 # Product detail, search
-│   │   ├── categories.py               # Category listing
-│   │   ├── cart.py                     # Cart operations
-│   │   ├── checkout.py                 # Checkout flow
-│   │   ├── admin.py                    # Admin panel
-│   │   └── language.py                 # Language switching
-│   │
-│   ├── forms/                          # WTForms validation
-│   │   ├── __init__.py
-│   │   ├── checkout_forms.py           # Checkout and delivery forms
-│   │   └── admin_forms.py              # Admin login, category, product forms
-│   │
-│   ├── utils/                          # Utilities and helpers
-│   │   ├── __init__.py
-│   │   ├── decorators.py               # @admin_required, @cart_required
-│   │   └── helpers.py                  # Format helpers, validators
-│   │
-│   ├── templates/                      # Jinja2 templates
-│   │   ├── base.html                   # Base template
-│   │   ├── components/                 # Reusable components
-│   │   │   ├── navbar.html
-│   │   │   └── footer.html
-│   │   ├── pages/                      # Page templates
-│   │   │   ├── home_en.html
-│   │   │   ├── home_bg.html
-│   │   │   ├── products/
-│   │   │   │   ├── category_list_en.html
-│   │   │   │   ├── category_list_bg.html
-│   │   │   │   ├── product_detail_en.html
-│   │   │   │   └── product_detail_bg.html
-│   │   │   ├── cart/
-│   │   │   │   ├── cart_en.html
-│   │   │   │   └── cart_bg.html
-│   │   │   ├── checkout/
-│   │   │   │   ├── checkout_en.html
-│   │   │   │   ├── checkout_bg.html
-│   │   │   │   ├── place_order_en.html
-│   │   │   │   ├── place_order_bg.html
-│   │   │   │   ├── success_en.html
-│   │   │   │   ├── success_bg.html
-│   │   │   │   ├── fail_en.html
-│   │   │   │   └── fail_bg.html
-│   │   │   └── admin/
-│   │   │       ├── login_en.html
-│   │   │       ├── login_bg.html
-│   │   │       ├── dashboard_en.html
-│   │   │       ├── dashboard_bg.html
-│   │   │       ├── categories_en.html
-│   │   │       ├── categories_bg.html
-│   │   │       ├── products_en.html
-│   │   │       ├── products_bg.html
-│   │   │       ├── orders_en.html
-│   │   │       └── orders_bg.html
-│   │   ├── macros/
-│   │   │   └── forms.html              # Form rendering macros
-│   │   └── errors/
-│   │       ├── 404_en.html
-│   │       ├── 404_bg.html
-│   │       ├── 500_en.html
-│   │       └── 500_bg.html
-│   │
-│   └── static/                         # Static assets
-│       ├── css/
-│       │   └── custom.css              # Custom styles
-│       ├── js/
-│       │   ├── cart.js                 # Cart interactions
-│       │   ├── checkout.js             # Payment/delivery toggles
-│       │   └── product.js              # Product gallery, quantity
-│       └── images/
-│           └── uploads/                # Product images (gitignored)
-│
-├── migrations/                         # Flask-Migrate database versions
-│
-├── tests/                              # Test suite
-│   ├── __init__.py
-│   ├── conftest.py                     # Pytest fixtures
-│   ├── unit/                           # Unit tests
-│   │   ├── test_cart_service.py
-│   │   ├── test_order_service.py
-│   │   └── test_payment_service.py
-│   └── integration/                    # Integration tests
-│       ├── test_checkout_flow.py
-│       └── test_admin_flow.py
-│
-├── instance/                           # Runtime files (gitignored)
-│   └── craftforge.db                   # SQLite database
-│
-├── .gitignore                          # Git ignore rules
-├── requirements.txt                    # Production dependencies
-├── requirements-dev.txt                # Development dependencies
-├── seed_data.py                        # Database seeding script
-├── run.py                              # Application entry point
-├── LICENSE
-└── README.md                           # This file
-```
+.                                                        # Root
+├── cfs                                                  # Root package directory for CraftForge Studio application
+│   ├── app                                              # Main application package containing all core functionality
+│   │   ├── config.py                                    # Application configuration settings
+│   │   ├── extensions.py                                # Flask extensions initialization (SQLAlchemy, Migrate, Login, etc.)
+│   │   ├── forms                                        # WTForms form definitions for data validation
+│   │   │   ├── admin_forms.py                           # Forms for admin operations (product/category CRUD)
+│   │   │   ├── checkout_forms.py                        # Forms for checkout process (customer info, delivery, payment)
+│   │   │   └── __init__.py                              # Forms package initializer
+│   │   ├── __init__.py                                  # Application factory (create_app function)
+│   │   ├── models                                       # SQLAlchemy ORM models (database table definitions)
+│   │   │   ├── admin.py                                 # Admin user model for authentication and authorization
+│   │   │   ├── category.py                              # Category model for product categorization
+│   │   │   ├── __init__.py                              # Models package initializer, imports all models
+│   │   │   ├── order.py                                 # Order and OrderItem models for purchase tracking
+│   │   │   └── product.py                               # Product model with details, pricing, inventory
+│   │   ├── repositories                                 # Data access layer - abstracts database operations
+│   │   │   ├── base_repository.py                       # Base repository with common CRUD operations
+│   │   │   ├── category_repository.py                   # Category-specific database queries
+│   │   │   ├── __init__.py                              # Repositories package initializer
+│   │   │   ├── order_repository.py                      # Order-specific database queries
+│   │   │   └── product_repository.py                    # Product-specific database queries (filtering, search)
+│   │   ├── routes                                       # Flask blueprints - URL routing and view functions
+│   │   │   ├── admin.py                                 # Admin panel routes (dashboard, product/category management)
+│   │   │   ├── cart.py                                  # Shopping cart routes (add, remove, update items)
+│   │   │   ├── categories.py                            # Category browsing routes
+│   │   │   ├── checkout.py                              # Checkout flow routes (review, payment, confirmation)
+│   │   │   ├── __init__.py                              # Routes package initializer, registers all blueprints
+│   │   │   ├── language.py                              # Language switching routes (EN/BG toggle)
+│   │   │   ├── main.py                                  # Main routes (home page, about, contact)
+│   │   │   └── products.py                              # Product routes (detail view, search)
+│   │   ├── services                                     # Business logic layer - processes data between routes and repositories
+│   │   │   ├── cart_service.py                          # Cart operations (calculate totals, validate items)
+│   │   │   ├── category_service.py                      # Category operations (get with products, validation)
+│   │   │   ├── delivery_service.py                      # Delivery operations (Econt integration, shipping calculation)
+│   │   │   ├── __init__.py                              # Services package initializer
+│   │   │   ├── order_service.py                         # Order processing (create, update status, calculate totals)
+│   │   │   └── payment_service.py                       # Payment processing (Stripe, PayPal, cash on delivery)
+│   │   ├── static                                       # Static assets (CSS, JS, images)
+│   │   │   ├── css                                      # Custom stylesheets
+│   │   │   │   └── custom.css                           # Additional styles beyond Tailwind
+│   │   │   ├── images                                   # Product images, logos, icons
+│   │   │   └── js                                       # Client-side JavaScript
+│   │   │       ├── cart.js                              # Cart interactivity (quantity updates, remove items)
+│   │   │       ├── checkout.js                          # Checkout form interactions (delivery method toggle, payment)
+│   │   │       └── product.js                           # Product page interactions (image gallery, quantity selector)
+│   │   ├── templates                                    # Jinja2 HTML templates
+│   │   │   ├── base.html                                # Base template with common HTML structure and meta tags
+│   │   │   ├── components                               # Reusable template components
+│   │   │   │   ├── footer.html                          # Footer component (copyright, links)
+│   │   │   │   └── navbar.html                          # Navigation bar component (logo, menu, cart, language switcher)
+│   │   │   ├── errors                                   # Error page templates
+│   │   │   │   ├── 404_bg.html                          # Page not found - Bulgarian
+│   │   │   │   ├── 404_en.html                          # Page not found - English
+│   │   │   │   ├── 500_bg.html                          # Server error - Bulgarian
+│   │   │   │   └── 500_en.html                          # Server error - English
+│   │   │   ├── macros                                   # Jinja2 macros (reusable template functions)
+│   │   │   │   └── forms.html                           # Form field rendering macros (input, select, errors)
+│   │   │   └── pages                                    # Page templates organized by feature
+│   │   │       ├── admin                                # Admin panel pages
+│   │   │       │   ├── categories_bg.html               # Category management - Bulgarian
+│   │   │       │   ├── categories_en.html               # Category management - English
+│   │   │       │   ├── dashboard_bg.html                # Admin dashboard - Bulgarian
+│   │   │       │   ├── dashboard_en.html                # Admin dashboard - English
+│   │   │       │   ├── login_bg.html                    # Admin login - Bulgarian
+│   │   │       │   ├── login_en.html                    # Admin login - English
+│   │   │       │   ├── orders_bg.html                   # Order management - Bulgarian
+│   │   │       │   ├── orders_en.html                   # Order management - English
+│   │   │       │   ├── products_bg.html                 # Product management - Bulgarian
+│   │   │       │   └── products_en.html                 # Product management - English
+│   │   │       ├── cart                                 # Shopping cart pages
+│   │   │       │   ├── cart_bg.html                     # Cart view - Bulgarian
+│   │   │       │   └── cart_en.html                     # Cart view - English
+│   │   │       ├── checkout                             # Checkout flow pages
+│   │   │       │   ├── checkout_bg.html                 # Checkout form - Bulgarian
+│   │   │       │   ├── checkout_en.html                 # Checkout form - English
+│   │   │       │   ├── fail_bg.html                     # Payment failed - Bulgarian
+│   │   │       │   ├── fail_en.html                     # Payment failed - English
+│   │   │       │   ├── place_order_bg.html              # Order review/confirmation - Bulgarian
+│   │   │       │   ├── place_order_en.html              # Order review/confirmation - English
+│   │   │       │   ├── success_bg.html                  # Order success - Bulgarian
+│   │   │       │   └── success_en.html                  # Order success - English
+│   │   │       ├── home_bg.html                         # Homepage - Bulgarian
+│   │   │       ├── home_en.html                         # Homepage - English
+│   │   │       └── products                             # Product browsing pages
+│   │   │           ├── category_list_bg.html            # Category product list - Bulgarian
+│   │   │           ├── category_list_en.html            # Category product list - English
+│   │   │           ├── product_detail_bg.html           # Product detail view - Bulgarian
+│   │   │           └── product_detail_en.html           # Product detail view - English
+│   │   └── utils                                        # Utility functions and helpers
+│   │       ├── decorators.py                            # Custom decorators (admin_required, language_required)
+│   │       ├── helpers.py                               # Helper functions (format currency, calculate shipping)
+│   │       └── __init__.py                              # Utils package initializer
+│   ├── instance                                         # Instance folder for local data (database, uploads)
+│   ├── migrations                                       # Alembic database migrations (version control for schema changes)
+│   ├── run.py                                           # Application entry point - runs the Flask development server
+│   ├── seed_data.py                                     # Database seeding script (creates initial categories, products,etc.)
+│   └── tests                                            # Test suite
+│       ├── __init__.py                                  # Tests package initializer
+│       ├── integration                                  # Integration tests (full flow testing with database)
+│       └── unit                                         # Unit tests (isolated component testing)
+│           ├── test_cart_service.py                     # Tests for cart service functions
+│           ├── test_order_service.py                    # Tests for order service functions
+│           └── test_payment_service.py                  # Tests for payment service functions
+├── development_stages.txt                               # Development roadmap and implementation stages documentation
+├── LICENSE                                              # Project license (MIT, Apache, etc.)
+├── README_DEPLOYMENT.md                                 # Deployment guide (production setup, server configuration)
+├── README.md                                            # Main project documentation (overview, installation, usage)
+├── README_PROJECT_SUMMARY.md                            # Project summary (architecture, features, tech stack)
+└── requirements.txt                                     # Python dependencies (Flask, SQLAlchemy, WTForms, etc.)
 
 ## 🔧 Technology Stack
 

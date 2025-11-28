@@ -1,0 +1,180 @@
+CRAFTFORGE STUDIO - STAGED DEVELOPMENT PLAN
+=============================================
+
+STAGE 1: Foundation & Configuration
+------------------------------------
+- Set up Flask application factory (app/__init__.py)
+- Configure database, extensions, and environment variables (config.py, extensions.py)
+- Create base models with SQLAlchemy (Category, Product, Order, Admin)
+- Initialize database migrations
+- Create basic repository classes with CRUD operations
+- Set up base templates (base.html, navbar.html, footer.html)
+
+Expected Output: Application starts successfully, database initialized, migrations work
+Testing: Run app, verify database connection, check base templates render
+
+
+STAGE 2: Public Homepage & Language System
+-------------------------------------------
+- Implement language switching mechanism (session-based EN/BG)
+- Create home page routes (main.py blueprint)
+- Build home page templates (home_en.html, home_bg.html)
+- Add static assets (CSS, JS, images from design)
+- Implement navbar with language toggle and cart icon
+- Create footer component
+
+Expected Output: Bilingual homepage displays correctly with working language switcher
+Testing: Navigate homepage, switch languages, verify all sections render properly
+
+
+STAGE 3: Category & Product Management (Admin)
+-----------------------------------------------
+- Create admin authentication system (login, logout, session management)
+- Build admin routes (admin.py blueprint) for categories and products
+- Implement category service and repository with full CRUD
+- Implement product service and repository with full CRUD
+- Create admin templates (login, dashboard, categories, products)
+- Add forms for category/product creation and editing
+
+Expected Output: Admin can login, create/edit/delete categories and products
+Testing: Login as admin, create test categories and products, verify database persistence
+
+
+STAGE 4: Product Browsing & Search (Public)
+--------------------------------------------
+- Create category browsing routes (categories.py blueprint)
+- Implement product detail routes (products.py blueprint)
+- Build category listing templates (category_list_en.html, category_list_bg.html)
+- Build product detail templates (product_detail_en.html, product_detail_bg.html)
+- Add product search functionality with filtering
+- Implement pagination for product listings
+
+Expected Output: Users can browse categories, view products, search and filter
+Testing: Navigate categories, view products, test search, verify pagination works
+
+
+STAGE 5: Shopping Cart System
+------------------------------
+- Implement session-based cart service with add/update/remove operations
+- Create cart routes (cart.py blueprint)
+- Build cart templates (cart_en.html, cart_bg.html)
+- Add JavaScript for cart interactions (quantity updates, item removal)
+- Implement cart total calculations (subtotal, shipping, total)
+- Add "Add to Cart" functionality to product pages
+
+Expected Output: Fully functional shopping cart with real-time updates
+Testing: Add products, update quantities, remove items, verify totals calculate correctly
+
+
+STAGE 6: Checkout Flow & Order Creation
+----------------------------------------
+- Create checkout routes (checkout.py blueprint)
+- Implement checkout forms (customer info, delivery method, address fields)
+- Build checkout templates (checkout_en.html, checkout_bg.html)
+- Create order review page (place_order_en.html, place_order_bg.html)
+- Implement order service with order creation logic
+- Add order repository with database operations
+- Create JavaScript for delivery method toggle (home/office/box)
+
+Expected Output: Complete checkout flow from cart to order review
+Testing: Complete checkout with all delivery methods, verify order data stored
+
+
+STAGE 7: Econt Delivery Integration
+------------------------------------
+- Research and integrate Econt API (shipping calculation, office/box locations)
+- Create delivery_service.py in app/services/ for Econt API calls
+- Implement city/office/box lookup with autocomplete
+- Add shipping cost calculation based on delivery method and address
+- Create address validation using Econt API
+- Implement office/box location picker (dropdown or search)
+- Add delivery time estimation
+- Store delivery tracking information with orders
+- Update checkout templates to include dynamic office/box selection
+
+NOTE: delivery_service.py is not in the original structure but is REQUIRED for this stage
+
+Expected Output: Real-time shipping costs, validated addresses, office/box selection
+Testing: Test all three delivery methods (home, office, box), verify API responses, check cost calculations
+
+
+STAGE 8: Payment Integration
+-----------------------------
+- Implement payment service for Stripe, PayPal, and Cash on Delivery
+- Add payment method selection to checkout form
+- Integrate Stripe checkout with redirect flow
+- Integrate PayPal button rendering and capture
+- Create payment success templates (success_en.html, success_bg.html)
+- Create payment failure templates (fail_en.html, fail_bg.html)
+- Add payment status tracking and order finalization
+
+Expected Output: All three payment methods work end-to-end
+Testing: Test each payment method (use test keys), verify order status updates
+
+
+STAGE 9: Admin Order Management
+--------------------------------
+- Create order management routes in admin blueprint
+- Build order listing and detail templates (orders_en.html, orders_bg.html)
+- Implement order status updates (pending, confirmed, shipped, completed)
+- Add order filtering and search functionality
+- Create order detail view with customer and items information
+- Add Econt shipment creation and tracking integration
+- Display delivery tracking numbers and status in admin
+- Add order export functionality (optional: CSV/PDF)
+
+Expected Output: Admin can view all orders, update statuses, create Econt shipments, track deliveries
+Testing: Place test orders, view in admin, create shipments, verify tracking works
+
+
+STAGE 10: Testing, Refinement & Deployment Prep
+-----------------------------------------------
+- Write unit tests for services (cart, order, payment, delivery)
+- Write integration tests for checkout flow with Econt
+- Add error handling and user-friendly error pages (404, 500)
+- Implement form validation and error messages
+- Add security measures (CSRF protection, input sanitization)
+- Create seed_data.py script for initial categories/products
+- Prepare deployment configurations (railway.json, render.yaml, Procfile)
+- Test with production-like settings (Gunicorn, PostgreSQL)
+
+Expected Output: Fully tested application ready for production deployment
+Testing: Run full test suite, manual end-to-end testing, security review
+
+
+STAGE 11: Production Deployment & Documentation
+------------------------------------------------
+- Choose deployment platform (Railway, Render, or Heroku)
+- Configure environment variables for production
+- Deploy to production with PostgreSQL database
+- Run database migrations on production
+- Seed production database with initial data
+- Configure custom domain and SSL (if needed)
+- Set up monitoring and logging
+- Final production testing (all features, payment methods)
+- Document deployment process and maintenance procedures
+
+Expected Output: Live production application accessible to users
+Testing: Comprehensive production testing, load testing, payment verification
+
+
+SUMMARY
+-------
+Total Stages: 11
+Estimated Timeline: 9-13 weeks (depending on team size and Econt API complexity)
+
+Each stage builds upon the previous, ensuring:
+✓ Incremental, visible progress
+✓ Testable functionality at each step
+✓ Clear separation of concerns
+✓ Logical feature grouping
+✓ Minimal dependencies between stages
+
+The progression follows: Foundation → Public Features → Admin Features → E-commerce Logic → Delivery Integration → Quality → Production
+
+IMPORTANT NOTES ON ECONT INTEGRATION:
+- Econt API documentation: https://www.econt.com/services/integration
+- Will need API credentials (test and production)
+- Stage 7 should include comprehensive testing with Econt sandbox environment
+- Delivery costs calculation is critical for accurate total pricing in checkout
+- Office/box location data should be cached to reduce API calls
