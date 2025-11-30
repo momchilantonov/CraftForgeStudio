@@ -1,5 +1,7 @@
+<!-- Navbar with language switcher -->
 <nav class="bg-orange-100 shadow-md">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Logo -->
     <a href="{{ url_for('main.home') }}">
       <img
         src="https://via.placeholder.com/150x50?text=Logo"
@@ -8,29 +10,31 @@
       />
     </a>
 
-    <div class="flex items-center space-x-4">
+    <!-- Navigation Links + Cart + Language -->
+    <div class="flex items-center space-x-6">
+      <!-- Navigation Links -->
       <div class="hidden md:flex space-x-6">
         <a
           href="{{ url_for('main.home') }}#categories"
           class="hover:text-orange-700 transition"
+          >{% if session.language == 'bg' %}Категории{% else %}Categories{%
+          endif %}</a
         >
-          {% if session.language == 'bg' %}Категории{% else %}Categories{% endif %}
-        </a>
         <a
           href="{{ url_for('main.home') }}#about"
           class="hover:text-orange-700 transition"
+          >{% if session.language == 'bg' %}За нас{% else %}About{% endif %}</a
         >
-          {% if session.language == 'bg' %}За нас{% else %}About{% endif %}
-        </a>
         <a
           href="{{ url_for('main.home') }}#contact"
           class="hover:text-orange-700 transition"
+          >{% if session.language == 'bg' %}Контакт{% else %}Contact{% endif
+          %}</a
         >
-          {% if session.language == 'bg' %}Контакт{% else %}Contact{% endif %}
-        </a>
       </div>
 
-      <a href="{{ url_for('cart.view_cart') }}" class="relative flex items-center">
+      <!-- Cart Icon (placeholder for future implementation) -->
+      <a href="#" class="relative flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-7 w-7 text-orange-900 hover:text-orange-700 transition"
@@ -45,26 +49,38 @@
             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 7.5M7 13h10M17.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm-10 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
           />
         </svg>
-        {% if session.cart and session.cart.items|length > 0 %}
+        <!-- Cart badge - will be dynamic in future stages -->
         <span
-          class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5"
-        >{{ session.cart.items|length }}</span>
-        {% endif %}
+          class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 hidden"
+          >0</span
+        >
       </a>
 
+      <!-- Language Switcher -->
       <div class="flex rounded-full overflow-hidden border-2 border-orange-400">
+        {% if session.language == 'en' %}
         <a
           href="{{ url_for('language.set_language', lang='en') }}"
-          class="w-7 h-7 {% if session.language == 'en' %}bg-orange-400 text-white{% else %}bg-orange-50 text-orange-900{% endif %} text-xs font-semibold flex items-center justify-center hover:bg-orange-500 transition"
+          class="w-7 h-7 bg-orange-400 text-white text-xs font-semibold flex items-center justify-center"
+          >EN</a
         >
-          EN
-        </a>
         <a
           href="{{ url_for('language.set_language', lang='bg') }}"
-          class="w-7 h-7 {% if session.language == 'bg' %}bg-orange-400 text-white{% else %}bg-orange-50 text-orange-900{% endif %} text-xs font-semibold flex items-center justify-center hover:bg-orange-500 transition"
+          class="w-7 h-7 bg-orange-50 text-orange-900 text-xs font-semibold flex items-center justify-center hover:bg-orange-200 transition"
+          >BG</a
         >
-          BG
-        </a>
+        {% else %}
+        <a
+          href="{{ url_for('language.set_language', lang='en') }}"
+          class="w-7 h-7 bg-orange-50 text-orange-900 text-xs font-semibold flex items-center justify-center hover:bg-orange-200 transition"
+          >EN</a
+        >
+        <a
+          href="{{ url_for('language.set_language', lang='bg') }}"
+          class="w-7 h-7 bg-orange-400 text-white text-xs font-semibold flex items-center justify-center"
+          >BG</a
+        >
+        {% endif %}
       </div>
     </div>
   </div>
