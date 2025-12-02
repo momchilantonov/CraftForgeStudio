@@ -12,16 +12,17 @@ This document provides three complementary views of the repository structure:
 
 ## 📊 Repository Statistics
 
-- **Total Files:** 95
-- **Total Size:** 229.5 KB
+- **Total Files:** 98
+- **Total Size:** 835.3 KB
 - **File Types:**
   - `.py`: 43 files
-  - `.html`: 36 files
+  - `.html`: 38 files
   - `.md`: 5 files
   - `no extension`: 3 files
   - `.js`: 3 files
   - `.txt`: 2 files
   - `.css`: 1 files
+  - `.jpg`: 1 files
   - `.ini`: 1 files
   - `.mako`: 1 files
 
@@ -98,6 +99,10 @@ Visual tree structure with raw GitHub URLs for direct file access.
     │   │   │   ├── css/
     │   │   │   │   └── custom.css
     │   │   │   │       → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/css/custom.css
+    │   │   │   ├── images/
+    │   │   │   │   └── products/
+    │   │   │   │       └── 8f4741731e4b46b9970678affc187675_46503998_10205125980744552_7007565921715748864_n.jpg
+    │   │   │   │           → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/images/products/8f4741731e4b46b9970678affc187675_46503998_10205125980744552_7007565921715748864_n.jpg
     │   │   │   └── js/
     │   │   │       ├── cart.js
     │   │   │       │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/js/cart.js
@@ -147,8 +152,12 @@ Visual tree structure with raw GitHub URLs for direct file access.
     │   │   │   │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/orders_en.html
     │   │   │   │   │   ├── products_bg.html
     │   │   │   │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/products_bg.html
-    │   │   │   │   │   └── products_en.html
-    │   │   │   │   │       → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/products_en.html
+    │   │   │   │   │   ├── products_en.html
+    │   │   │   │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/products_en.html
+    │   │   │   │   │   ├── profile_bg.html
+    │   │   │   │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/profile_bg.html
+    │   │   │   │   │   └── profile_en.html
+    │   │   │   │   │       → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/profile_en.html
     │   │   │   │   ├── cart/
     │   │   │   │   │   ├── cart_bg.html
     │   │   │   │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/cart/cart_bg.html
@@ -295,6 +304,7 @@ Alphabetical listing of all files with direct URLs.
 | `cfs/app/services/order_service.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/services/order_service.py |
 | `cfs/app/services/payment_service.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/services/payment_service.py |
 | `cfs/app/static/css/custom.css` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/css/custom.css |
+| `cfs/app/static/images/products/8f4741731e4b46b9970678affc187675_46503998_10205125980744552_7007565921715748864_n.jpg` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/images/products/8f4741731e4b46b9970678affc187675_46503998_10205125980744552_7007565921715748864_n.jpg |
 | `cfs/app/static/js/cart.js` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/js/cart.js |
 | `cfs/app/static/js/checkout.js` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/js/checkout.js |
 | `cfs/app/static/js/product.js` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/js/product.js |
@@ -318,6 +328,8 @@ Alphabetical listing of all files with direct URLs.
 | `cfs/app/templates/pages/admin/orders_en.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/orders_en.html |
 | `cfs/app/templates/pages/admin/products_bg.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/products_bg.html |
 | `cfs/app/templates/pages/admin/products_en.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/products_en.html |
+| `cfs/app/templates/pages/admin/profile_bg.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/profile_bg.html |
+| `cfs/app/templates/pages/admin/profile_en.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/profile_en.html |
 | `cfs/app/templates/pages/cart/cart_bg.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/cart/cart_bg.html |
 | `cfs/app/templates/pages/cart/cart_en.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/cart/cart_en.html |
 | `cfs/app/templates/pages/checkout/checkout_bg.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/checkout/checkout_bg.html |
@@ -440,7 +452,7 @@ Comprehensive file information organized by directory.
 #### `admin_forms.py`
 
 - **Full Path:** `cfs/app/forms/admin_forms.py`
-- **Size:** 0.0 B
+- **Size:** 2.8 KB
 - **Extension:** `.py`
 - **Raw URL:**
   ```
@@ -569,7 +581,7 @@ Comprehensive file information organized by directory.
 #### `__init__.py`
 
 - **Full Path:** `cfs/app/routes/__init__.py`
-- **Size:** 215.0 B
+- **Size:** 294.0 B
 - **Extension:** `.py`
 - **Raw URL:**
   ```
@@ -579,7 +591,7 @@ Comprehensive file information organized by directory.
 #### `admin.py`
 
 - **Full Path:** `cfs/app/routes/admin.py`
-- **Size:** 0.0 B
+- **Size:** 12.0 KB
 - **Extension:** `.py`
 - **Raw URL:**
   ```
@@ -672,7 +684,7 @@ Comprehensive file information organized by directory.
 #### `category_service.py`
 
 - **Full Path:** `cfs/app/services/category_service.py`
-- **Size:** 0.0 B
+- **Size:** 3.2 KB
 - **Extension:** `.py`
 - **Raw URL:**
   ```
@@ -720,6 +732,19 @@ Comprehensive file information organized by directory.
 - **Raw URL:**
   ```
   https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/css/custom.css
+  ```
+
+
+### 📂 cfs\app\static\images\products
+
+#### `8f4741731e4b46b9970678affc187675_46503998_10205125980744552_7007565921715748864_n.jpg`
+
+- **Full Path:** `cfs/app/static/images/products/8f4741731e4b46b9970678affc187675_46503998_10205125980744552_7007565921715748864_n.jpg`
+- **Size:** 520.8 KB
+- **Extension:** `.jpg`
+- **Raw URL:**
+  ```
+  https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/images/products/8f4741731e4b46b9970678affc187675_46503998_10205125980744552_7007565921715748864_n.jpg
   ```
 
 
@@ -896,7 +921,7 @@ Comprehensive file information organized by directory.
 #### `categories_bg.html`
 
 - **Full Path:** `cfs/app/templates/pages/admin/categories_bg.html`
-- **Size:** 0.0 B
+- **Size:** 8.4 KB
 - **Extension:** `.html`
 - **Raw URL:**
   ```
@@ -906,7 +931,7 @@ Comprehensive file information organized by directory.
 #### `categories_en.html`
 
 - **Full Path:** `cfs/app/templates/pages/admin/categories_en.html`
-- **Size:** 0.0 B
+- **Size:** 8.0 KB
 - **Extension:** `.html`
 - **Raw URL:**
   ```
@@ -916,7 +941,7 @@ Comprehensive file information organized by directory.
 #### `dashboard_bg.html`
 
 - **Full Path:** `cfs/app/templates/pages/admin/dashboard_bg.html`
-- **Size:** 0.0 B
+- **Size:** 4.4 KB
 - **Extension:** `.html`
 - **Raw URL:**
   ```
@@ -926,7 +951,7 @@ Comprehensive file information organized by directory.
 #### `dashboard_en.html`
 
 - **Full Path:** `cfs/app/templates/pages/admin/dashboard_en.html`
-- **Size:** 0.0 B
+- **Size:** 4.2 KB
 - **Extension:** `.html`
 - **Raw URL:**
   ```
@@ -936,7 +961,7 @@ Comprehensive file information organized by directory.
 #### `login_bg.html`
 
 - **Full Path:** `cfs/app/templates/pages/admin/login_bg.html`
-- **Size:** 0.0 B
+- **Size:** 2.2 KB
 - **Extension:** `.html`
 - **Raw URL:**
   ```
@@ -946,7 +971,7 @@ Comprehensive file information organized by directory.
 #### `login_en.html`
 
 - **Full Path:** `cfs/app/templates/pages/admin/login_en.html`
-- **Size:** 0.0 B
+- **Size:** 2.1 KB
 - **Extension:** `.html`
 - **Raw URL:**
   ```
@@ -976,7 +1001,7 @@ Comprehensive file information organized by directory.
 #### `products_bg.html`
 
 - **Full Path:** `cfs/app/templates/pages/admin/products_bg.html`
-- **Size:** 0.0 B
+- **Size:** 11.2 KB
 - **Extension:** `.html`
 - **Raw URL:**
   ```
@@ -986,11 +1011,31 @@ Comprehensive file information organized by directory.
 #### `products_en.html`
 
 - **Full Path:** `cfs/app/templates/pages/admin/products_en.html`
-- **Size:** 0.0 B
+- **Size:** 10.8 KB
 - **Extension:** `.html`
 - **Raw URL:**
   ```
   https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/products_en.html
+  ```
+
+#### `profile_bg.html`
+
+- **Full Path:** `cfs/app/templates/pages/admin/profile_bg.html`
+- **Size:** 6.3 KB
+- **Extension:** `.html`
+- **Raw URL:**
+  ```
+  https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/profile_bg.html
+  ```
+
+#### `profile_en.html`
+
+- **Full Path:** `cfs/app/templates/pages/admin/profile_en.html`
+- **Size:** 6.2 KB
+- **Extension:** `.html`
+- **Raw URL:**
+  ```
+  https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/pages/admin/profile_en.html
   ```
 
 
@@ -1168,7 +1213,7 @@ Comprehensive file information organized by directory.
 #### `helpers.py`
 
 - **Full Path:** `cfs/app/utils/helpers.py`
-- **Size:** 0.0 B
+- **Size:** 1.1 KB
 - **Extension:** `.py`
 - **Raw URL:**
   ```
@@ -1333,7 +1378,7 @@ Comprehensive file information organized by directory.
 #### `README_PROJECT_PROGRESS.md`
 
 - **Full Path:** `README_PROJECT_PROGRESS.md`
-- **Size:** 30.6 KB
+- **Size:** 29.3 KB
 - **Extension:** `.md`
 - **Raw URL:**
   ```
@@ -1353,7 +1398,7 @@ Comprehensive file information organized by directory.
 #### `README_REPOSITORY_FILE_MAP.md`
 
 - **Full Path:** `README_REPOSITORY_FILE_MAP.md`
-- **Size:** 57.6 KB
+- **Size:** 60.9 KB
 - **Extension:** `.md`
 - **Raw URL:**
   ```
@@ -1373,7 +1418,7 @@ Comprehensive file information organized by directory.
 #### `requirements.txt`
 
 - **Full Path:** `requirements.txt`
-- **Size:** 550.0 B
+- **Size:** 565.0 B
 - **Extension:** `.txt`
 - **Raw URL:**
   ```
@@ -1387,7 +1432,7 @@ Comprehensive file information organized by directory.
 
 - **Generated by:** GitHub Repository File Map Generator
 - **Repository:** CraftForgeStudio
-- **Total Files:** 95
-- **Total Size:** 229.5 KB
+- **Total Files:** 98
+- **Total Size:** 835.3 KB
 
 **Note:** This file map is auto-generated. URLs point to raw file contents on GitHub.
