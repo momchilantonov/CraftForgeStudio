@@ -12,12 +12,12 @@ This document provides three complementary views of the repository structure:
 
 ## 📊 Repository Statistics
 
-- **Total Files:** 90
-- **Total Size:** 149.6 KB
+- **Total Files:** 95
+- **Total Size:** 229.5 KB
 - **File Types:**
-  - `.py`: 41 files
-  - `.html`: 34 files
-  - `.md`: 4 files
+  - `.py`: 43 files
+  - `.html`: 36 files
+  - `.md`: 5 files
   - `no extension`: 3 files
   - `.js`: 3 files
   - `.txt`: 2 files
@@ -107,6 +107,10 @@ Visual tree structure with raw GitHub URLs for direct file access.
     │   │   │           → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/js/product.js
     │   │   ├── templates/
     │   │   │   ├── components/
+    │   │   │   │   ├── breadcrumb.html
+    │   │   │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/components/breadcrumb.html
+    │   │   │   │   ├── category_menu.html
+    │   │   │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/components/category_menu.html
     │   │   │   │   ├── footer.html
     │   │   │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/components/footer.html
     │   │   │   │   └── navbar.html
@@ -197,8 +201,10 @@ Visual tree structure with raw GitHub URLs for direct file access.
     │   │       → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/extensions.py
     │   ├── migrations/
     │   │   ├── versions/
-    │   │   │   └── 9517da0867ac_initial_migration_models_created.py
-    │   │   │       → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/versions/9517da0867ac_initial_migration_models_created.py
+    │   │   │   ├── 9517da0867ac_initial_migration_models_created.py
+    │   │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/versions/9517da0867ac_initial_migration_models_created.py
+    │   │   │   └── c118cbc0717e_add_hierarchical_categories.py
+    │   │   │       → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/versions/c118cbc0717e_add_hierarchical_categories.py
     │   │   ├── README
     │   │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/README
     │   │   ├── alembic.ini
@@ -217,6 +223,8 @@ Visual tree structure with raw GitHub URLs for direct file access.
     │   │   │       → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/tests/unit/test_payment_service.py
     │   │   └── __init__.py
     │   │       → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/tests/__init__.py
+    │   ├── generate_file_map.py
+    │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/generate_file_map.py
     │   ├── run.py
     │   │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/run.py
     │   └── seed_data.py
@@ -233,6 +241,8 @@ Visual tree structure with raw GitHub URLs for direct file access.
     │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/README_PROJECT_PROGRESS.md
     ├── README_PROJECT_SUMMARY.md
     │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/README_PROJECT_SUMMARY.md
+    ├── README_REPOSITORY_FILE_MAP.md
+    │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/README_REPOSITORY_FILE_MAP.md
     ├── development_stages.txt
     │   → https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/development_stages.txt
     └── requirements.txt
@@ -253,6 +263,7 @@ Alphabetical listing of all files with direct URLs.
 | `README_DEPLOYMENT.md` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/README_DEPLOYMENT.md |
 | `README_PROJECT_PROGRESS.md` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/README_PROJECT_PROGRESS.md |
 | `README_PROJECT_SUMMARY.md` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/README_PROJECT_SUMMARY.md |
+| `README_REPOSITORY_FILE_MAP.md` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/README_REPOSITORY_FILE_MAP.md |
 | `cfs/app/__init__.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/__init__.py |
 | `cfs/app/config.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/config.py |
 | `cfs/app/extensions.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/extensions.py |
@@ -288,6 +299,8 @@ Alphabetical listing of all files with direct URLs.
 | `cfs/app/static/js/checkout.js` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/js/checkout.js |
 | `cfs/app/static/js/product.js` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/static/js/product.js |
 | `cfs/app/templates/base.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/base.html |
+| `cfs/app/templates/components/breadcrumb.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/components/breadcrumb.html |
+| `cfs/app/templates/components/category_menu.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/components/category_menu.html |
 | `cfs/app/templates/components/footer.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/components/footer.html |
 | `cfs/app/templates/components/navbar.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/components/navbar.html |
 | `cfs/app/templates/errors/404_bg.html` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/errors/404_bg.html |
@@ -324,11 +337,13 @@ Alphabetical listing of all files with direct URLs.
 | `cfs/app/utils/__init__.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/utils/__init__.py |
 | `cfs/app/utils/decorators.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/utils/decorators.py |
 | `cfs/app/utils/helpers.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/utils/helpers.py |
+| `cfs/generate_file_map.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/generate_file_map.py |
 | `cfs/migrations/README` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/README |
 | `cfs/migrations/alembic.ini` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/alembic.ini |
 | `cfs/migrations/env.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/env.py |
 | `cfs/migrations/script.py.mako` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/script.py.mako |
 | `cfs/migrations/versions/9517da0867ac_initial_migration_models_created.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/versions/9517da0867ac_initial_migration_models_created.py |
+| `cfs/migrations/versions/c118cbc0717e_add_hierarchical_categories.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/versions/c118cbc0717e_add_hierarchical_categories.py |
 | `cfs/run.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/run.py |
 | `cfs/seed_data.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/seed_data.py |
 | `cfs/tests/__init__.py` | https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/tests/__init__.py |
@@ -345,6 +360,16 @@ Alphabetical listing of all files with direct URLs.
 Comprehensive file information organized by directory.
 
 ### 📂 cfs
+
+#### `generate_file_map.py`
+
+- **Full Path:** `cfs/generate_file_map.py`
+- **Size:** 17.8 KB
+- **Extension:** `.py`
+- **Raw URL:**
+  ```
+  https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/generate_file_map.py
+  ```
 
 #### `run.py`
 
@@ -458,7 +483,7 @@ Comprehensive file information organized by directory.
 #### `category.py`
 
 - **Full Path:** `cfs/app/models/category.py`
-- **Size:** 1.2 KB
+- **Size:** 1.9 KB
 - **Extension:** `.py`
 - **Raw URL:**
   ```
@@ -511,7 +536,7 @@ Comprehensive file information organized by directory.
 #### `category_repository.py`
 
 - **Full Path:** `cfs/app/repositories/category_repository.py`
-- **Size:** 591.0 B
+- **Size:** 1.6 KB
 - **Extension:** `.py`
 - **Raw URL:**
   ```
@@ -574,7 +599,7 @@ Comprehensive file information organized by directory.
 #### `categories.py`
 
 - **Full Path:** `cfs/app/routes/categories.py`
-- **Size:** 0.0 B
+- **Size:** 1.6 KB
 - **Extension:** `.py`
 - **Raw URL:**
   ```
@@ -745,6 +770,26 @@ Comprehensive file information organized by directory.
 
 
 ### 📂 cfs\app\templates\components
+
+#### `breadcrumb.html`
+
+- **Full Path:** `cfs/app/templates/components/breadcrumb.html`
+- **Size:** 0.0 B
+- **Extension:** `.html`
+- **Raw URL:**
+  ```
+  https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/components/breadcrumb.html
+  ```
+
+#### `category_menu.html`
+
+- **Full Path:** `cfs/app/templates/components/category_menu.html`
+- **Size:** 0.0 B
+- **Extension:** `.html`
+- **Raw URL:**
+  ```
+  https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/app/templates/components/category_menu.html
+  ```
 
 #### `footer.html`
 
@@ -1186,6 +1231,16 @@ Comprehensive file information organized by directory.
   https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/versions/9517da0867ac_initial_migration_models_created.py
   ```
 
+#### `c118cbc0717e_add_hierarchical_categories.py`
+
+- **Full Path:** `cfs/migrations/versions/c118cbc0717e_add_hierarchical_categories.py`
+- **Size:** 1.1 KB
+- **Extension:** `.py`
+- **Raw URL:**
+  ```
+  https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/cfs/migrations/versions/c118cbc0717e_add_hierarchical_categories.py
+  ```
+
 
 ### 📂 cfs\tests
 
@@ -1295,6 +1350,16 @@ Comprehensive file information organized by directory.
   https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/README_PROJECT_SUMMARY.md
   ```
 
+#### `README_REPOSITORY_FILE_MAP.md`
+
+- **Full Path:** `README_REPOSITORY_FILE_MAP.md`
+- **Size:** 57.6 KB
+- **Extension:** `.md`
+- **Raw URL:**
+  ```
+  https://raw.githubusercontent.com/momchilantonov/CraftForgeStudio/refs/heads/main/README_REPOSITORY_FILE_MAP.md
+  ```
+
 #### `development_stages.txt`
 
 - **Full Path:** `development_stages.txt`
@@ -1322,7 +1387,7 @@ Comprehensive file information organized by directory.
 
 - **Generated by:** GitHub Repository File Map Generator
 - **Repository:** CraftForgeStudio
-- **Total Files:** 90
-- **Total Size:** 149.6 KB
+- **Total Files:** 95
+- **Total Size:** 229.5 KB
 
 **Note:** This file map is auto-generated. URLs point to raw file contents on GitHub.
