@@ -1,7 +1,7 @@
 # CraftForge Studio - Project Progress Documentation
 
-**Last Updated:** November 30, 2025  
-**Current Status:** Stage 2 Complete ✅  
+**Last Updated:** December 2, 2025  
+**Current Status:** Stage 3 Complete ✅  
 **Development Platforms:** Windows 10/11, Ubuntu Linux  
 **Repository:** https://github.com/momchilantonov/CraftForgeStudio
 
@@ -14,10 +14,11 @@
 3. [Development Stages Overview](#development-stages-overview)
 4. [Stage 1: Foundation & Configuration](#stage-1-foundation--configuration)
 5. [Stage 2: Public Homepage & Language System](#stage-2-public-homepage--language-system)
-6. [Environment Setup (Cross-Platform)](#environment-setup-cross-platform)
-7. [Database Schema](#database-schema)
-8. [Next Steps: Stage 3](#next-steps-stage-3)
-9. [Known Issues & Solutions](#known-issues--solutions)
+6. [Stage 3: Category & Product Management (Admin)](#stage-3-category--product-management-admin)
+7. [Environment Setup (Cross-Platform)](#environment-setup-cross-platform)
+8. [Database Schema](#database-schema)
+9. [Next Steps: Stage 4](#next-steps-stage-4)
+10. [Known Issues & Solutions](#known-issues--solutions)
 
 ---
 
@@ -54,146 +55,7 @@
 
 ## 📁 Complete Project Structure
 
-```
-CraftForgeStudio/
-├── cfs/                                    # Application root directory
-│   ├── app/                                # Main application package
-│   │   ├── __init__.py                    # Application factory (create_app)
-│   │   ├── config.py                      # Configuration classes (Dev/Prod/Test)
-│   │   ├── extensions.py                  # Flask extensions initialization
-│   │   │
-│   │   ├── models/                        # SQLAlchemy ORM models
-│   │   │   ├── __init__.py
-│   │   │   ├── admin.py                   # Admin user model
-│   │   │   ├── category.py                # Product category model
-│   │   │   ├── order.py                   # Order & OrderItem models
-│   │   │   └── product.py                 # Product model
-│   │   │
-│   │   ├── repositories/                  # Data access layer
-│   │   │   ├── __init__.py
-│   │   │   ├── base_repository.py         # Base CRUD operations
-│   │   │   ├── category_repository.py     # Category queries
-│   │   │   ├── order_repository.py        # Order queries
-│   │   │   └── product_repository.py      # Product queries
-│   │   │
-│   │   ├── routes/                        # Flask blueprints (URL routing)
-│   │   │   ├── __init__.py                # Blueprint registration
-│   │   │   ├── admin.py                   # Admin panel routes
-│   │   │   ├── cart.py                    # Shopping cart routes
-│   │   │   ├── categories.py              # Category browsing
-│   │   │   ├── checkout.py                # Checkout flow
-│   │   │   ├── language.py                # Language switching
-│   │   │   ├── main.py                    # Homepage & static pages
-│   │   │   └── products.py                # Product browsing
-│   │   │
-│   │   ├── services/                      # Business logic layer
-│   │   │   ├── __init__.py
-│   │   │   ├── cart_service.py            # Cart operations
-│   │   │   ├── category_service.py        # Category operations
-│   │   │   ├── delivery_service.py        # Econt integration
-│   │   │   ├── order_service.py           # Order processing
-│   │   │   └── payment_service.py         # Payment processing
-│   │   │
-│   │   ├── forms/                         # WTForms validation
-│   │   │   ├── __init__.py
-│   │   │   ├── admin_forms.py             # Admin forms
-│   │   │   └── checkout_forms.py          # Checkout forms
-│   │   │
-│   │   ├── templates/                     # Jinja2 HTML templates
-│   │   │   ├── base.html                  # Base template structure
-│   │   │   │
-│   │   │   ├── components/                # Reusable components
-│   │   │   │   ├── navbar.html
-│   │   │   │   └── footer.html
-│   │   │   │
-│   │   │   ├── macros/                    # Jinja2 macros
-│   │   │   │   └── forms.html
-│   │   │   │
-│   │   │   ├── errors/                    # Error pages
-│   │   │   │   ├── 404_en.html
-│   │   │   │   ├── 404_bg.html
-│   │   │   │   ├── 500_en.html
-│   │   │   │   └── 500_bg.html
-│   │   │   │
-│   │   │   └── pages/                     # Page templates
-│   │   │       ├── home_en.html
-│   │   │       ├── home_bg.html
-│   │   │       │
-│   │   │       ├── admin/                 # Admin templates
-│   │   │       │   ├── login_en.html
-│   │   │       │   ├── login_bg.html
-│   │   │       │   ├── dashboard_en.html
-│   │   │       │   ├── dashboard_bg.html
-│   │   │       │   ├── categories_en.html
-│   │   │       │   ├── categories_bg.html
-│   │   │       │   ├── products_en.html
-│   │   │       │   ├── products_bg.html
-│   │   │       │   ├── orders_en.html
-│   │   │       │   └── orders_bg.html
-│   │   │       │
-│   │   │       ├── cart/                  # Cart templates
-│   │   │       │   ├── cart_en.html
-│   │   │       │   └── cart_bg.html
-│   │   │       │
-│   │   │       ├── checkout/              # Checkout templates
-│   │   │       │   ├── checkout_en.html
-│   │   │       │   ├── checkout_bg.html
-│   │   │       │   ├── place_order_en.html
-│   │   │       │   ├── place_order_bg.html
-│   │   │       │   ├── success_en.html
-│   │   │       │   ├── success_bg.html
-│   │   │       │   ├── fail_en.html
-│   │   │       │   └── fail_bg.html
-│   │   │       │
-│   │   │       └── products/              # Product templates
-│   │   │           ├── category_list_en.html
-│   │   │           ├── category_list_bg.html
-│   │   │           ├── product_detail_en.html
-│   │   │           └── product_detail_bg.html
-│   │   │
-│   │   ├── static/                        # Static assets
-│   │   │   ├── css/
-│   │   │   │   └── custom.css
-│   │   │   ├── js/
-│   │   │   │   ├── cart.js
-│   │   │   │   ├── checkout.js
-│   │   │   │   └── product.js
-│   │   │   └── images/
-│   │   │
-│   │   └── utils/                         # Utility functions
-│   │       ├── __init__.py
-│   │       ├── decorators.py              # Custom decorators
-│   │       └── helpers.py                 # Helper functions
-│   │
-│   ├── instance/                          # Local instance folder
-│   │   └── craftforge.db                  # SQLite database (dev only)
-│   │
-│   ├── migrations/                        # Alembic migrations
-│   │   ├── versions/
-│   │   │   └── 9517da0867ac_initial_migration_models_created.py
-│   │   ├── alembic.ini
-│   │   ├── env.py
-│   │   └── script.py.mako
-│   │
-│   ├── tests/                             # Test suite
-│   │   ├── __init__.py
-│   │   ├── unit/
-│   │   │   ├── test_cart_service.py
-│   │   │   ├── test_order_service.py
-│   │   │   └── test_payment_service.py
-│   │   └── integration/
-│   │
-│   ├── run.py                             # Application entry point
-│   ├── seed_data.py                       # Database seeding script
-│   └── requirements.txt                   # Python dependencies
-│
-├── development_stages.txt                 # Development roadmap
-├── README.md                              # Main documentation
-├── README_DEPLOYMENT.md                   # Deployment guide
-├── README_PROJECT_SUMMARY.md              # Architecture summary
-├── README_PROJECT_PROGRESS.md             # This file
-└── LICENSE                                # MIT License
-```
+Check README_REPOSITORY_FILE_MAP.md
 
 ---
 
@@ -205,8 +67,8 @@ The project follows an **11-stage development plan** over 9-13 weeks:
 |-------|------|----------|--------|
 | **1** | Foundation & Configuration | 1 week | ✅ Complete |
 | **2** | Public Homepage & Language System | 1 week | ✅ Complete |
-| **3** | Category & Product Management (Admin) | 1-2 weeks | 🔜 Next |
-| **4** | Product Browsing & Search | 1 week | ⏳ Planned |
+| **3** | Category & Product Management (Admin) | 1-2 weeks | ✅ Complete |
+| **4** | Product Browsing & Search | 1 week | 🔜 Next |
 | **5** | Shopping Cart System | 1 week | ⏳ Planned |
 | **6** | Checkout Flow & Order Creation | 1-2 weeks | ⏳ Planned |
 | **7** | Econt Delivery Integration | 1 week | ⏳ Planned |
@@ -246,13 +108,20 @@ Establish project foundation with database models, repository pattern, configura
 #### 2. Database Models (`app/models/`)
 
 **Category Model** (`category.py`)
-- Fields: id, slug, name_en, name_bg, description_en, description_bg, icon, image_url, is_active, display_order, timestamps
-- Methods: `get_name(lang)`, `get_description(lang)`
-- Indexes: slug (unique)
+- Fields: id, slug, name_en, name_bg, description_en, description_bg, icon, image_url, parent_id, level, is_active, display_order, timestamps
+- **Hierarchical Structure:** Self-referential foreign key for parent-child relationships
+  - `parent_id`: References `categories.id` (nullable for main categories)
+  - `level`: Integer tracking hierarchy depth (0 = main category, 1+ = subcategories)
+- **Relationships:**
+  - `parent`: Access parent category (uses `remote_side=[id]`)
+  - `subcategories`: Access child categories (backref, lazy='dynamic', ordered by display_order)
+  - `products`: One-to-Many with Product (back_populates='category', lazy='dynamic')
+- Methods: `get_name(lang)`, `get_description(lang)`, `is_main_category()`, `is_subcategory()`, `get_full_path(lang)`
+- Indexes: slug (unique), parent_id
 
 **Product Model** (`product.py`)
 - Fields: id, sku, name_en, name_bg, description_en, description_bg, price, category_id, stock, image_url, additional_images (JSON), is_active, is_featured, timestamps
-- Relationships: Many-to-One with Category
+- Relationships: Many-to-One with Category (back_populates='products')
 - Properties: `in_stock`
 - Methods: `get_name(lang)`, `get_description(lang)`
 - Indexes: sku (unique)
@@ -628,36 +497,33 @@ admin (standalone - no relationships)
 
 ---
 
-## 🚀 Next Steps: Stage 3
+## 🛠️ Stage 3: Category & Product Management (Admin)
 
-**Stage 3: Category & Product Management (Admin)**
-
+**Status:** ✅ Complete  
 **Duration:** 1-2 weeks  
-**Status:** 🔜 Next
+**Date Completed:** December 2, 2025
 
 ### Objectives
 
-- Implement admin authentication system
-- Create admin dashboard with statistics
-- Build category CRUD interface
-- Build product CRUD interface with image upload
-- Protect admin routes with decorators
+Implement complete admin panel with authentication, dashboard, and full CRUD operations for categories and products.
 
-### Components to Build
+### Components Built
 
-#### 1. Authentication System
+#### 1. Admin Authentication System
 
 **Files:**
-- `app/forms/admin_forms.py` - LoginForm
-- `app/routes/admin.py` - login, logout, dashboard routes
+- `app/forms/admin_forms.py` - LoginForm, UpdateProfileForm, ChangePasswordForm
+- `app/routes/admin.py` - login, logout, dashboard, profile routes
 - `app/templates/pages/admin/login_en.html`
 - `app/templates/pages/admin/login_bg.html`
 
 **Features:**
+- Flask-Login integration with `@login_required` decorator
 - WTForms with CSRF protection
-- Flask-Login session management
-- "Remember me" functionality
-- `@login_required` decorator
+- "Remember me" checkbox for persistent sessions
+- Account activation status check
+- Bilingual error messages
+- Next page redirection after login
 
 #### 2. Admin Dashboard
 
@@ -665,58 +531,82 @@ admin (standalone - no relationships)
 - `app/templates/pages/admin/dashboard_en.html`
 - `app/templates/pages/admin/dashboard_bg.html`
 
-**Display:**
-- Total products, categories, orders count
+**Statistics Display:**
+- Total products count
+- Total categories count
+- Total orders count
 - Recent orders list (5 most recent)
-- Quick action buttons
+- Quick navigation links
+- Welcome message with admin name
 
-#### 3. Category Management
+#### 3. Category Management (Hierarchical)
 
 **Files:**
+- `app/services/category_service.py` - Business logic layer
+- `app/repositories/category_repository.py` - Enhanced with subcategory methods
 - `app/forms/admin_forms.py` - CategoryForm
-- `app/routes/admin.py` - category list, add, edit, delete routes
 - `app/templates/pages/admin/categories_en.html`
 - `app/templates/pages/admin/categories_bg.html`
 
 **Features:**
-- List all categories with edit/delete buttons
-- Add form: name_en, name_bg, description_en, description_bg, display_order
-- Edit form: update existing category
-- Delete with confirmation
-- Slug auto-generation from English name
-- Activate/deactivate toggle
+- **Hierarchical Structure:** Main categories and subcategories with parent_id/level support
+- **CRUD Operations:** Create, read, update, delete with validation
+- **Parent Selection:** Dropdown to assign parent category (None for main categories)
+- **Slug Auto-generation:** Generated from English name using regex cleanup
+- **Display Order:** Sortable field for homepage arrangement
+- **Active/Inactive Toggle:** Control category visibility
+- **Delete Protection:** Cannot delete categories with products or subcategories
+- **Bilingual Forms:** Separate fields for English and Bulgarian
+
+**Category Model Updates:**
+- Added `parent_id` foreign key (self-referential)
+- Added `level` field (0 = main, 1 = subcategory)
+- Added `subcategories` relationship with `back_populates`
+- Helper methods: `is_main_category()`, `is_subcategory()`, `get_full_path()`
 
 #### 4. Product Management
 
 **Files:**
-- `app/forms/admin_forms.py` - ProductForm
-- `app/routes/admin.py` - product list, add, edit, delete routes
+- `app/repositories/product_repository.py` - Enhanced with pagination
+- `app/forms/admin_forms.py` - ProductForm with FileField
+- `app/utils/helpers.py` - Image upload utilities
 - `app/templates/pages/admin/products_en.html`
 - `app/templates/pages/admin/products_bg.html`
-- `app/utils/helpers.py` - Image upload utilities
 
 **Features:**
-- List all products with pagination
-- Add form: all product fields, category dropdown, image upload
-- Edit form: update product, replace image
-- Delete with stock check
-- SKU auto-generation
-- Mark as featured checkbox
-- Stock management input
+- **CRUD Operations:** Create, read, update, delete products
+- **Image Upload:** FileField with validation (jpg, jpeg, png, webp)
+- **SKU Auto-generation:** UUID-based unique identifiers (format: CF-XXXXXXXX)
+- **Category Dropdown:** Select from active categories with bilingual names
+- **Stock Management:** Integer field for inventory tracking
+- **Featured Flag:** Checkbox to mark products for homepage display
+- **Pagination:** 12 products per page in listing
+- **Image Replacement:** Old images deleted when updating with new image
+- **Bilingual Forms:** Separate fields for names and descriptions
 
-#### 5. Image Upload
+**Helper Functions:**
+- `generate_sku(prefix='CF')` - Creates unique SKU with UUID
+- `generate_slug(text)` - Cleans text for URL-safe slugs
+- `save_product_image(image_file)` - Validates, saves with unique name to `/static/images/products/`
+- `delete_product_image(image_url)` - Removes old images from filesystem
 
-**Implementation:**
-- File type validation (jpg, png, webp)
-- File size limit (5MB max)
-- Unique filename generation
-- Save to `app/static/images/products/`
-- Update product.image_url in database
+#### 5. Admin Profile Management (Bonus Feature)
 
-**New Dependency:**
-- Pillow==10.1.0 (for image processing)
+**Files:**
+- `app/forms/admin_forms.py` - UpdateProfileForm, ChangePasswordForm
+- `app/routes/admin.py` - profile route with dual-form handling
+- `app/templates/pages/admin/profile_en.html`
+- `app/templates/pages/admin/profile_bg.html`
 
-### Routes to Implement
+**Features:**
+- **Update Profile:** Change full name and email with uniqueness validation
+- **Change Password:** Current password verification, minimum 8 characters, confirmation matching
+- **Two-Column Layout:** Profile update (left), password change (right)
+- **Account Info Display:** Active status, member since date
+- **Form Validators:** DataRequired, Email, Length, EqualTo for password confirmation
+- **Security:** Email uniqueness check excludes current user
+
+### Implemented Routes
 
 ```
 GET/POST  /admin/login
@@ -732,50 +622,151 @@ GET       /admin/products
 GET/POST  /admin/products/add
 GET/POST  /admin/products/edit/<id>
 POST      /admin/products/delete/<id>
+
+GET/POST  /admin/profile
 ```
 
-### Implementation Order
+### Bilingual Templates
 
-**Week 1:**
-1. Days 1-2: Admin authentication (login/logout)
-2. Day 3: Admin dashboard
-3. Days 4-5: Category CRUD
+All admin pages created in English and Bulgarian:
+- login_en.html / login_bg.html
+- dashboard_en.html / dashboard_bg.html
+- categories_en.html / categories_bg.html
+- products_en.html / products_bg.html
+- profile_en.html / profile_bg.html
+- orders_en.html / orders_bg.html (empty, for Stage 9)
 
-**Week 2:**
-1. Days 1-3: Product CRUD
-2. Day 4: Image upload functionality
-3. Day 5: Testing and refinement
+### New Dependencies
+
+- **Pillow 10.4.0** - Image processing and validation
+
+### Testing Results
+
+**Authentication:**
+- ✅ Login with valid credentials succeeds
+- ✅ Login with invalid credentials shows error
+- ✅ Logout clears session and redirects to homepage
+- ✅ Protected routes redirect to login when not authenticated
+- ✅ "Remember me" persists session across browser sessions
+- ✅ Inactive admin accounts cannot log in
+
+**Category CRUD:**
+- ✅ List displays all categories (main and subcategories)
+- ✅ Add creates category with auto-generated slug
+- ✅ Parent selection dropdown works (None for main categories)
+- ✅ Edit updates all category fields correctly
+- ✅ Delete removes category (only if no products/subcategories)
+- ✅ Display order affects homepage category arrangement
+- ✅ Hierarchical relationships maintained (parent_id, level)
+
+**Product CRUD:**
+- ✅ List displays products with pagination (12 per page)
+- ✅ Add creates product with auto-generated SKU
+- ✅ Category dropdown shows only active categories
+- ✅ Edit updates all product fields
+- ✅ Delete removes product and associated image
+- ✅ Featured products appear on homepage
+- ✅ Stock quantity updates correctly
+
+**Image Upload:**
+- ✅ Valid images (jpg, png, webp) upload successfully
+- ✅ Invalid file types rejected with error message
+- ✅ Unique filenames generated (UUID-based)
+- ✅ Images saved to `/static/images/products/`
+- ✅ Old images deleted when product image updated
+- ✅ Product display shows uploaded images
+
+**Admin Profile:**
+- ✅ Profile form updates full name and email
+- ✅ Email uniqueness validated (excluding current user)
+- ✅ Password change requires correct current password
+- ✅ New password must be minimum 8 characters
+- ✅ Password confirmation must match new password
+- ✅ Success messages displayed for both operations
+
+---
+
+## 🚀 Next Steps: Stage 4
+
+**Stage 4: Product Browsing & Search (Public)**
+
+**Duration:** 1 week  
+**Status:** 🔜 Next
+
+### Objectives
+
+- Create category browsing routes for public users
+- Implement product detail pages with full information
+- Build product search functionality with filtering
+- Add pagination for product listings
+- Create breadcrumb navigation
+
+### Components to Build
+
+#### 1. Category Browsing Routes
+
+**Files:**
+- `app/routes/categories.py` - Category listing and filtering
+- `app/templates/pages/products/category_list_en.html`
+- `app/templates/pages/products/category_list_bg.html`
+
+**Features:**
+- List all main categories and subcategories
+- Filter products by category
+- Display product count per category
+- Sort products by price, name, newest
+
+#### 2. Product Detail Pages
+
+**Files:**
+- `app/routes/products.py` - Product detail view
+- `app/templates/pages/products/product_detail_en.html`
+- `app/templates/pages/products/product_detail_bg.html`
+
+**Features:**
+- Full product information display
+- Product image gallery (main + additional_images)
+- Add to cart button
+- Related products section
+- Breadcrumb navigation
+- Stock availability indicator
+
+#### 3. Search & Filtering
+
+**Implementation:**
+- Search by product name/description
+- Filter by category
+- Filter by price range
+- Filter by availability (in stock)
+- Sort options (price, name, newest)
+
+#### 4. Pagination
+
+**Implementation:**
+- Products per page: 12
+- Page navigation controls
+- Total results counter
+- "No results" message
+
+### Routes to Implement
+
+```
+GET /categories
+GET /categories/<slug>
+GET /products/<slug>
+GET /products/search
+```
 
 ### Testing Checklist
 
-**Authentication:**
-- [ ] Login with valid credentials succeeds
-- [ ] Login with invalid credentials fails
-- [ ] Logout clears session
-- [ ] Protected routes redirect to login
-- [ ] "Remember me" persists session
-
-**Category CRUD:**
-- [ ] List displays all categories
-- [ ] Add creates new category with slug
-- [ ] Edit updates category fields
-- [ ] Delete removes category (if no products)
-- [ ] Display order affects homepage sorting
-
-**Product CRUD:**
-- [ ] List displays all products with pagination
-- [ ] Add creates product with auto SKU
-- [ ] Edit updates product fields
-- [ ] Delete removes product
-- [ ] Featured products appear on homepage
-- [ ] Stock quantity tracked correctly
-
-**Image Upload:**
-- [ ] Valid images upload successfully
-- [ ] Invalid file types rejected
-- [ ] Large files rejected (>5MB)
-- [ ] Images display on product page
-- [ ] Old images replaced on update
+- [ ] Category listing displays all active categories
+- [ ] Products filtered correctly by category
+- [ ] Product detail page shows all information
+- [ ] Search finds products by name/description
+- [ ] Filters work independently and combined
+- [ ] Pagination navigates correctly
+- [ ] Breadcrumbs show correct path
+- [ ] "Add to cart" button appears (functionality in Stage 5)
 
 ---
 
@@ -920,28 +911,33 @@ echo $env:FLASK_APP      # Windows
 
 **Completed:**
 - ✅ Project structure and configuration
-- ✅ Database models and migrations
+- ✅ Database models and migrations (including hierarchical categories)
 - ✅ Repository pattern implementation
 - ✅ Bilingual homepage with language switching
 - ✅ Featured products display
 - ✅ Category showcase
 - ✅ Navigation and footer components
 - ✅ Sample data seeding
+- ✅ Admin authentication system (login, logout, session management)
+- ✅ Admin dashboard with statistics
+- ✅ Category CRUD with hierarchical support (main/subcategories)
+- ✅ Product CRUD with image upload
+- ✅ Admin profile management with password change
 
 **In Progress:**
-- 🔄 Stage 3: Admin authentication and CRUD
+- 🔄 Stage 4: Product browsing and search
 
 **Upcoming:**
-- ⏳ Stage 4: Product browsing and search
-- ⏳ Stage 5: Shopping cart
-- ⏳ Stage 6-11: Checkout, payments, deployment
+- ⏳ Stage 5: Shopping cart system
+- ⏳ Stage 6: Checkout flow and order creation
+- ⏳ Stage 7-11: Econt delivery, payments, admin orders, testing, deployment
 
 ---
 
-**Document Version:** 2.0  
-**Last Updated:** November 30, 2025  
+**Document Version:** 3.0  
+**Last Updated:** December 2, 2025  
 **Platforms:** Windows 10/11, Ubuntu Linux  
-**Ready for:** Stage 3 Development
+**Ready for:** Stage 4 Development
 
 ---
 

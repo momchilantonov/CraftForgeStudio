@@ -25,7 +25,8 @@ class Category(db.Model):
 
     parent = db.relationship('Category', remote_side=[id], backref=db.backref(
         'subcategories', lazy='dynamic', order_by='Category.display_order'))
-    products = db.relationship('Product', backref='category', lazy='dynamic')
+    products = db.relationship(
+        'Product', back_populates='category', lazy='dynamic')
 
     def get_name(self, lang='en'):
         return self.name_en if lang == 'en' else self.name_bg
